@@ -9,7 +9,14 @@ const app = exprss()
 
 await connectCloudinary()
 
-app.use(cors())
+app.use(cors({
+  origin: [
+    'http://localhost:5173', 
+    'https://quick-ai-psi-two.vercel.app/' 
+  ],
+  credentials: true
+}))
+
 app.use(exprss.json())
 app.use(clerkMiddleware())
 
