@@ -19,11 +19,13 @@ app.use(clerkMiddleware())
 
 app.get('/', (req, res) => res.send('Server is Live!'))
 
+// API Routes
 app.use('/api/ai', requireAuth(), aiRouter)
 app.use('/api/user', requireAuth(), userRouter)
 
 const PORT = process.env.PORT || 3000;
 
+// Catch-all route for 404 (Hamesha listen se pehle)
 app.all('(.*)', (req, res) => {
   res.status(404).send('Route not found');
 });
